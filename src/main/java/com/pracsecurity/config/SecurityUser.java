@@ -1,9 +1,15 @@
 package com.pracsecurity.config;
 
 import com.pracsecurity.domain.Member;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
 
+@Getter
+@Setter
+@ToString
 public class SecurityUser extends User {
 
     private Member member;

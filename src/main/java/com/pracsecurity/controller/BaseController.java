@@ -1,7 +1,10 @@
 package com.pracsecurity.controller;
 
+import com.pracsecurity.config.SecurityUser;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Log4j2
@@ -21,8 +24,11 @@ public class BaseController {
     }
 
     @RequestMapping("/main")
-    public String main() {
+    public String main(Authentication authentication, ModelMap map) {
         log.info("mainPage");
+
+        SecurityUser securityUser = (SecurityUser) authentication.getPrincipal();
+        map.addAttribute("user", securityUser);
         return "main";
     }
 

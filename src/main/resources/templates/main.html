@@ -6,7 +6,19 @@
 </head>
 <body>
 
+    <div>
         <p1>로그인 이후 보여지는 페이지</p1>
+    </div>
+
+    </hr>
+
+    <div>
+        <span th:text="${user.member.id}" th:value="userId"></span>
+        <form th:action="@{/logout}">
+            <input type="submit" value="로그아웃">
+        </form>
+    </div>
+
 
 </body>
 </html>
