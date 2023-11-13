@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         secu.csrf().disable();
         // 로그인 페이지와 성공했을 경우 넘어가는 페이지 설정
         secu.formLogin().loginPage("/login").defaultSuccessUrl("/main", true);
+        secu.formLogin().loginPage("/login?").defaultSuccessUrl("/main", true);
         // 로그인 에러시 넘어가는 login?error 페이지와 성공했을 경우 넘어가는 페이지 설정
         secu.formLogin().loginPage("/login?error").defaultSuccessUrl("/main", true);
         // 로그인 액션 프로세스 반드시 POST 그리고 성공시 URL
