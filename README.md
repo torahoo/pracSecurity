@@ -22,3 +22,18 @@ lombok 설정 오류
      @DataJpaTest
      @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
      를 넣어줘야 Test코드가 정상 작동한다.
+
+[23-11-13]
+PasswordEncoder 에러
+ - UnsatisfiedDependencyException
+   - @Autowired 동일한 타입의 Bean객체가 2개 이상일때 injection of autiwired dependencies failed 에러 
+   - Test가 돌아갈때 @Autowired로 주입된 객체 중 PasswordEncoder가 에러를 발생함
+   - 해결 법 : 순환참조 오류
+   - spring:
+     main:
+     allow-circular-references: true
+   - 스프링 부트 2.7.XX 버전 부터는 순환참조를 위해 위의 yml 설정을 넣어야 한다.
+   - 전에 했던 프로젝트 처럼 mysql test전용
+     @DataJpaTest
+     @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+     을 쓸 수 없다. bean create 에러가 발생한다.
