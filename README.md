@@ -37,3 +37,8 @@ PasswordEncoder 에러
      @DataJpaTest
      @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
      을 쓸 수 없다. bean create 에러가 발생한다.
+
+ - login페이지에서 값을 보내줄 때 username값 안 넘어옴
+   - UserDetailServiceImpl 에서 값을 처리하는데 이때 UserDetailService 에 선언된 username 이름과 
+     login.html 폼 데이터로 보내주는 값이 동일하지 않으면 서로 인식되지 않음.
+   - password 또한 동일

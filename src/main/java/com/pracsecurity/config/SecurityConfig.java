@@ -29,12 +29,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         secu.authorizeRequests().antMatchers("/manager/**").hasAnyRole("MANAGER", "ADMIN");
         // admin만 접근 가능
         secu.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
-
-        secu.csrf().disable(); // csrf토큰 disable
+        // csrf토큰 disable
+        secu.csrf().disable();
         // 로그인 페이지와 성공했을 경우 넘어가는 페이지 설정
         secu.formLogin().loginPage("/login").defaultSuccessUrl("/main", true);
+        // 로그인 에러시 넘어가는 login?error 페이지와 성공했을 경우 넘어가는 페이지 설정
+        secu.formLogin().loginPage("/login?error").defaultSuccessUrl("/main", true);
         // 로그인 액션 프로세스 반드시 POST 그리고 성공시 URL
-        secu.formLogin().loginProcessingUrl("loginAction").defaultSuccessUrl("/main", true);
+        secu.formLogin().loginProcessingUrl("/loginAction").defaultSuccessUrl("/main", true);
         // 실패시 URL
         secu.exceptionHandling().accessDeniedPage("/accessDenied");
         // 로그아웃 URL과 로그아웃 시 어디 URL로 갈 것인지
@@ -45,8 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Bean
     public PasswordEncoder passwordEncoder () {
-//        return new BCryptPasswordEncoder();
-
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
