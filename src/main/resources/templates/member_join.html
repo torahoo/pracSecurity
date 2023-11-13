@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join Page</title>
+</head>
+<body>
+
+    <form method="post" th:action="@{/joinAction}">
+        <table>
+            <h2>회원 가입</h2>
+            <tr>
+                <td>ID</td>
+                <td><input type="text" name="userName"></td>
+            </tr>
+            <tr>
+                <td>PASSWORD</td>
+                <td><input type="password" name="userPassword"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="회원 가입">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>
